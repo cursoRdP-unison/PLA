@@ -19,12 +19,21 @@ Para esto, vamos a hacer un poco de trampa, vamos a suponer que nosotros efectiv
 
 ## Práctica a realizar
 
-1. Desarrolla una función `modelo_aleatorio` que devuelva 3 números aleatorios, el primero en el intervalo [0, 1] 
-   y los otros dos en el intervalo [-1, 1] de forma que:
+1. Desarrolla una función `modelo_aleatorio` en el cual:
+
+	a. Se soliciten 4 numeros aleatorios entre el 0 y el 1, a los que llamaremos x1, y1, x2, y2.
+
+	b. Se obtenga el valor de os pesos de la recta que pasa entre los dos puntos calculados como:
+		```
+		k_2 = 1
+		k_1 = (y2 - y1) / (x2 - x1)
+		k_0 = y_1 - k_1 * x_1
+		```
+
+	de forma que:
    ```
    k_0, k_1, k_2 = modelo_aleatorio()
    ```
-   Por supuesto que la forma varia dependiendo del lenguaje en que se programe.
    
 2. Desarrolla una función `genera_datos`tal que reciba un número entero positivo `N` y devuelva una matriz `X` 
    de `N`renglones y 2 columnas de manera que los valores de la matriz sean datos aleatorios en el intervalo [0, 1].
