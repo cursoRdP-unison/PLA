@@ -15,5 +15,10 @@ def modelo_aleatorio():
 	k_0 = y1 - k_1 * x1 
 
 	return k_0, k_1, k_2
+
+def genera_datos(N):
+	return None if N <= 0 else np.random.uniform(0, 1, size=(N,2))
 	
 k_0, k_1, k_2 = modelo_aleatorio()
+
+X = genera_datos(5)
