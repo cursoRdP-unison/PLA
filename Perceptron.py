@@ -23,7 +23,6 @@ def genera_datos(N):
 def discriminante_lineal(k_0, k_1, k_2, X):
 
 	Y = []
-	temp = 0
 
 	for i in xrange(X.shape[0]):
 		x_1 = X[i][0]
@@ -34,19 +33,32 @@ def discriminante_lineal(k_0, k_1, k_2, X):
 
 def PLA(X, Y):
 
-	w = np.random.uniform(0, 1, size=3)
+	w = np.random.uniform(0, 1, size=X.shape[1])
 
-	rand = 
-	Xi = X[np.random.choice(X.shape[0])]
+	bien_clasificados = np.zeros(X.shape[0])
+	
+	while bien_clasificados.all() != 1:
+		i = np.random.choice(X.shape[0])
+		Xi = X[i]
+		Yi = Y[i]
+		sign = np.sign(np.dot(w.transpose(), Xi))
 
-	z = np.dot(w.transpose(), Xi)
+		if sign == Y[i]:
+			bien_clasificados[rand] = 1
+		else:
+			w = w + np.dot(Xi, Y[i])
 
-	print z
-		
+		print bien_clasificados
+
+	return w
+
+#def error_clasificacion(Y, Y_e):
+	# resta entre dos vectores?
+
 k_0, k_1, k_2 = modelo_aleatorio()
 
 X = genera_datos(5)
 
 Y = discriminante_lineal(k_0, k_1, k_2, X)
 
-PLA(X, Y)
+w_0, w_1, w_2 = PLA(X, Y)
