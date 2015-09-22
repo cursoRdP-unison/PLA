@@ -44,7 +44,7 @@ def PLA(X, Y):
 		sign = np.sign(np.dot(w.transpose(), Xi))
 
 		if sign == Y[i]:
-			bien_clasificados[rand] = 1
+			bien_clasificados[i] = 1
 		else:
 			w = w + np.dot(Xi, Y[i])
 
