@@ -86,3 +86,12 @@ print w_2
 print "Funcion 5: error_clasificacion"
 E_i = error_clasificacion(Y, Y)
 print E_i
+
+print "Funcion 6: prueba E_i"
+k_0, k_1, k_2 = modelo_aleatorio()
+X = genera_datos(10000)
+Y = discriminante_lineal(k_0, k_1, k_2, X)
+w_0, w_1, w_2 = PLA(X, Y)
+Y_e = discriminante_lineal(w_0, w_1, w_2, X)
+E_i = error_clasificacion(Y, Y_e)
+print E_i
