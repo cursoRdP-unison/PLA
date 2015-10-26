@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 __author__ = 'JuanManuel'
 
 import numpy as np
@@ -63,6 +65,34 @@ def error_clasificacion(Y, Y_e):
 
     return c / float(len(Y))
 
+def E_o_prom(N):
+
+    E_lista = np.zeros(500)
+    X_o = genera_datos(10000)
+
+    for epoch in xrange(1, 100):
+        k_0, k_1, k_2 = modelo_aleatorio()
+        Y_o = discriminante_lineal(k_0, k_1, k_2, X_o)
+
+        for iter in xrange(1, 100):
+            X = genera_datos(N)
+            Y = discriminante_lineal(k_0, k_1, k_2, X)
+            w_0, w_1, w_2 = PLA(X, Y)
+            Y_eo = discriminante_lineal(w_0, w_1, w_2, X_o)
+            E_o = error_clasificacion(Y_o, Y_eo)
+            indice = 100 * epoch + iter
+
+            if len(E_lista) <= indice:
+                temp = np.zeros(indice + 1)
+                for i in xrange(0, len(E_lista)):
+                    temp[i] = E_lista[i]
+                temp[indice] = E_o
+                E_lista = temp[:]
+            else:
+                E_lista[indice] = E_o
+
+    return sum(E_lista) / len(E_lista)
+    
 print "Funcion 1: modelo_aleatorio"
 k_0, k_1, k_2 = modelo_aleatorio()
 print k_0
@@ -102,3 +132,7 @@ Y_o = discriminante_lineal(k_0, k_1, k_2, X_o)
 Y_eo = discriminante_lineal(w_0, w_1, w_2, X_o)
 E_o = error_clasificacion(Y_o, Y_eo)
 print E_o
+
+print "Funcion 8: pseudocodigo E_o_prom"
+E_o_prom = E_o_prom(5)
+print E_o_prom
