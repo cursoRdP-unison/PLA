@@ -95,3 +95,10 @@ w_0, w_1, w_2 = PLA(X, Y)
 Y_e = discriminante_lineal(w_0, w_1, w_2, X)
 E_i = error_clasificacion(Y, Y_e)
 print E_i
+
+print "Funcion 7: prueba E_o"
+X_o = genera_datos(10000)
+Y_o = discriminante_lineal(k_0, k_1, k_2, X_o)
+Y_eo = discriminante_lineal(w_0, w_1, w_2, X_o)
+E_o = error_clasificacion(Y_o, Y_eo)
+print E_o
