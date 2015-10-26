@@ -136,3 +136,12 @@ print E_o
 print "Funcion 8: pseudocodigo E_o_prom"
 E_o_prom = E_o_prom(5)
 print E_o_prom
+
+print "Funcion 9: grafica"
+pass
+
+print "Funcion 10: tabla de E_o_prom"
+N = [10, 20, 50, 100]
+for x in N:
+    E_o_prom = E_o_prom(x)
+    print "N: " + str(x) + "    " + "E_o_prom: " + str(E_o_prom)
