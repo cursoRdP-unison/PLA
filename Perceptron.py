@@ -53,6 +53,16 @@ def PLA(X, Y):
 
     return w
 
+def error_clasificacion(Y, Y_e):
+
+    c = 0
+
+    for i in xrange(len(Y)):
+        if Y[i] != Y_e[i]:
+            c += 1
+
+    return c / float(len(Y))
+
 print "Funcion 1: modelo_aleatorio"
 k_0, k_1, k_2 = modelo_aleatorio()
 print k_0
@@ -72,3 +82,7 @@ w_0, w_1, w_2 = PLA(X, Y)
 print w_0
 print w_1
 print w_2
+
+print "Funcion 5: error_clasificacion"
+E_i = error_clasificacion(Y, Y)
+print E_i
